@@ -1,9 +1,15 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="form-group">
-      <label for="comment">Text:</label>
-      <textarea class="form-control" rows="5" id="comment"></textarea>
+      <label for="text">Insert Text:</label>
+      <textarea class="form-control" rows="5" id="text"></textarea>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-large btn-block btn-primary">Parse</button>
   </div>
 </div>
 

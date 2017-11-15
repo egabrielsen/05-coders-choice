@@ -1,0 +1,12 @@
+<div class="jumbotron">
+  <h2><%= gettext "Welcome to %{name}!", name: "Parser" %></h2>
+  <p class="lead">A simple web app that parses your text and gives you results!</p>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <button class="btn btn-primary btn-block">Get Started!</button>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br>

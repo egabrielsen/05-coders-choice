@@ -6,24 +6,17 @@
   <% end %>
 
   <div class="row">
-    <div class="col-xs-9">
+    <div class="col-xs-12">
       <div class="form-group">
         <%= label f, :title, class: "control-label" %>
         <%= text_input f, :title, class: "form-control" %>
         <%= error_tag f, :title %>
       </div>
     </div>
-    <div class="col-xs-3">
-      <div class="form-group">
-        <%= label f, :completed, class: "control-label" %>
-        <%= checkbox f, :completed, class: "checkbox" %>
-        <%= error_tag f, :completed %>
-      </div>
-    </div>
   </div>
 
   <div class="form-group">
-    <%= label f, :message, class: "control-label" %>
+    <%= label f, "Description", class: "control-label" %>
     <%= text_input f, :message, class: "form-control" %>
     <%= error_tag f, :message %>
   </div>
@@ -34,7 +27,34 @@
     <%= error_tag f, :date %>
   </div>
 
+  </br></br>
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-8">
+      <h4>Sub Tasks</h4>
+    </div>
+    <div class="col-xs-4 text-right">
+      <a id="add-note" class="btn btn-primary">New Subtask +</a>
+    </div>
+  </div>
+
+  </br>
+
   <div class="form-group">
-    <%= submit "Update", class: "btn btn-primary btn-block" %>
+    <div id="notes">
+      <div class="note row" style="margin-top:10px">
+        <div class="col-xs-10">
+          <input type="text" class="form-control" placeholder="Sub Task Title" name="task[notes][]">
+        </div>
+        <div class="col-xs-2">
+          <a class="btn btn-danger remove-note">Remove</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-success btn-block" %>
   </div>
 <% end %>

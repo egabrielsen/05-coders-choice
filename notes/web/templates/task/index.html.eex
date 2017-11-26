@@ -1,32 +1,41 @@
-<h2>Listing tasks</h2>
+<div class="row">
+  <div class="col-xs-8">
+    <h3>Global Tasks</h3>
+  </div>
+  <div class="col-xs-4">
+    <span class="pull-right" style="margin-top: 20px;margin-bottom: 10px; display:inline-block"><%= link "New task +", to: task_path(@conn, :new), class: "btn btn-primary btn-large"%></span>
+  </div>
+</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Completed</th>
-      <th>Message</th>
-      <th>Date</th>
+</br>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for task <- @tasks do %>
-    <tr>
-      <td><%= task.title %></td>
-      <td><%= task.completed %></td>
-      <td><%= task.message %></td>
-      <td><%= task.date %></td>
+<div class="bordered">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Completed</th>
+        <th>Description</th>
+        <th>Due Date</th>
 
-      <td class="text-right">
-        <span><%= link "Show", to: task_path(@conn, :show, task), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: task_path(@conn, :edit, task), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for task <- @tasks do %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.completed %></td>
+        <td><%= task.message %></td>
+        <td><%= task.date %></td>
 
-<span><%= link "New task", to: task_path(@conn, :new) %></span>
+        <td class="text-right">
+          <span><%= link "Show", to: task_path(@conn, :show, task), class: "btn btn-default btn-xs" %></span>
+          <span><%= link "Edit", to: task_path(@conn, :edit, task), class: "btn btn-default btn-xs" %></span>
+          <span><%= link "Delete", to: task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+        </td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

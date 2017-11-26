@@ -15,8 +15,8 @@ defmodule Notes.TaskController do
   end
 
   def create(conn, %{"task" => task_params}) do
-    case create_poll(task_params) do
-      {:ok, _poll} ->
+    case create_notes(task_params) do
+      {:ok, _note} ->
         conn
         |> put_flash(:info, "Task created successfully.")
         |> redirect(to: task_path(conn, :index))
@@ -26,7 +26,7 @@ defmodule Notes.TaskController do
   end
 
   def show(conn, %{"id" => id}) do
-    note_query = from n in Note, order_by: [asc: n.id]
+    note_query = from n in Note, order_by: [desc: n.likes]
     inspect note_query
     task_query = from t in Task, preload: [notes: ^note_query]
     task       = Repo.get!(task_query, id)
@@ -67,7 +67,7 @@ defmodule Notes.TaskController do
 
   # Private Functions
 
-  defp create_poll(task_params) do
+  defp create_notes(task_params) do
     Repo.transaction fn ->
       changeset = Task.changeset(%Task{}, task_params)
 

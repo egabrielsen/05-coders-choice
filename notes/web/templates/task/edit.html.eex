@@ -1,6 +1,13 @@
-<h2>Edit task</h2>
-
-<%= render "form.html", changeset: @changeset,
-                        action: task_path(@conn, :update, @task) %>
-
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Edit Task
+      </div>
+      <div class="panel-body">
+        <%= render "form.html", changeset: @changeset, action: task_path(@conn, :update, @task) %>
+      </div>
+    </div>
+  </div>
+</div>
 <span><%= link "Back", to: task_path(@conn, :index) %></span>

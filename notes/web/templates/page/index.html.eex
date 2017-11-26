@@ -1,35 +1,22 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <h2><%= gettext "Welcome to %{name}", name: "Task-it!" %></h2>
+  <p class="lead">A productive web framework that<br />manages your daily to-do's.</p>
 </div>
 
 <div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
+  <div class="col-lg-2">
   </div>
-
-  <div class="col-lg-6">
-    <h4>Help</h4>
+  <div class="col-lg-8">
+    <h4 class="text-center">What we provide</h4>
     <ul>
       <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
+        A quick way to manage your tasks with other people
       </li>
       <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
+        Keep track in real time which notes in a task have priority
       </li>
       <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
+        View graphical run down charts
       </li>
     </ul>
   </div>

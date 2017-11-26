@@ -1,42 +1,59 @@
-<h2>Show task</h2>
-<input type="hidden" id="task-id" value="<%= @task.id %>">
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= @task.title %>
 
-<ul>
+        <span style="margin-left:15px">
+          <%= if @task.completed do %>
+            <strong>completed</strong>
+          <% end %>
+        </span>
+        <span class="pull-right"><%= link "Edit", to: task_path(@conn, :edit, @task) %></span>
+      </div>
+      <div class="panel-body">
+        <input type="hidden" id="task-id" value="<%= @task.id %>">
 
-  <li>
-    <strong>Title:</strong>
-    <%= @task.title %>
-  </li>
+        <ul>
+          <li>
+            <strong>Description:</strong>
+            <%= @task.message %>
+          </li>
 
-  <li>
-    <strong>Completed:</strong>
-    <%= @task.completed %>
-  </li>
+          <li>
+            <strong>Due Date:</strong>
+            <%= @task.date %>
+          </li>
+        </ul>
 
-  <li>
-    <strong>Message:</strong>
-    <%= @task.message %>
-  </li>
+        <strong>Subtasks:</strong>
+        <ul class="list-group">
+          <%= for note <- @task.notes do %>
+            <li class="list-group-item note" data-note-id="<%= note.id %>">
+              <h4 class="list-group-item-heading">
+                <%= note.title %>
+                <%= link "+", to: "#", class: "pull-right btn btn-default like" %>
+              </h4>
+              <br>
+              <p class="list-group-item-text" style="min-height: 20px">
+                <span class="title"><%= note.inserted_at.month %>/<%= note.inserted_at.day %>/<%= note.inserted_at.year %></span>
+                <span class="badge likes"><%= note.likes %></span>
+              </p>
 
-  <li>
-    <strong>Date:</strong>
-    <%= @task.date %>
-  </li>
 
-  <li>
-    <strong>Notes:</strong>
-    <ul>
-      <%= for note <- @task.notes do %>
-        <li class="note" data-note-id="<%= note.id %>">
-          <span class="likes"><%= note.likes %></span> likes:
-          <%= note.title %>
-          <%= link "Like", to: "#", class: "btn btn-info like" %>
-        </li>
-      <% end %>
-    </ul>
-  </li>
+            </li>
+          <% end %>
+        </ul>
 
-</ul>
-
-<span><%= link "Edit", to: task_path(@conn, :edit, @task) %></span>
-<span><%= link "Back", to: task_path(@conn, :index) %></span>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <div id="my-chart"></div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+</div>

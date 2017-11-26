@@ -6,11 +6,11 @@ export class Task {
     this._setupRemoveNote()
   }
   _setupAddNote() {
-    // When add entry is clicked, clone the top entry
+    // When add note is clicked, clone the top note
     $("#add-note").on("click", this._cloneNote)
   }
   _setupRemoveNote() {
-    // When remove entry is clicked, remove the appropriate row
+    // When remove note is clicked, remove the appropriate row
     $("#notes").on("click", "a.remove-note", this._removeNote)
   }
   _removeNote(event) {
@@ -20,11 +20,8 @@ export class Task {
   _cloneNote() {
     // Clone the top entry
     var newEntry = $("#notes .note:first").clone()
-    // Reset its value to blank
     newEntry.find("input[type=text]").val("")
-    // And then throw it into the entry list
     newEntry.appendTo("#notes")
-    // And then focus that text entry
     newEntry.find("input[type=text]").focus()
   }
 }

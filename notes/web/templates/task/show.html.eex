@@ -1,0 +1,42 @@
+<h2>Show task</h2>
+<input type="hidden" id="task-id" value="<%= @task.id %>">
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @task.title %>
+  </li>
+
+  <li>
+    <strong>Completed:</strong>
+    <%= @task.completed %>
+  </li>
+
+  <li>
+    <strong>Message:</strong>
+    <%= @task.message %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @task.date %>
+  </li>
+
+  <li>
+    <strong>Notes:</strong>
+    <ul>
+      <%= for note <- @task.notes do %>
+        <li class="note" data-note-id="<%= note.id %>">
+          <span class="likes"><%= note.likes %></span> likes:
+          <%= note.title %>
+          <%= link "Like", to: "#", class: "btn btn-info like" %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: task_path(@conn, :edit, @task) %></span>
+<span><%= link "Back", to: task_path(@conn, :index) %></span>
